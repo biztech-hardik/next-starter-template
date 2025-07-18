@@ -1,62 +1,114 @@
-# Next.js Framework Starter
+# 🌐 Next.js + Sanity CMS – Content Website
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/next-starter-template)
+This is a modern, SEO-ready content website built using **Next.js (App Router)** and powered by **Sanity CMS** as the backend for dynamic content management.
 
-<!-- dash-content-start -->
+---
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's deployed on Cloudflare Workers as a [static website](https://developers.cloudflare.com/workers/static-assets/).
+## 🚀 Features
 
-This template uses [OpenNext](https://opennext.js.org/) via the [OpenNext Cloudflare adapter](https://opennext.js.org/cloudflare), which works by taking the Next.js build output and transforming it, so that it can run in Cloudflare Workers.
+- ⚡ Built with **Next.js 15+** (App Router + Server Components)
+- 🧩 Dynamic routing via `[slug]` – no need to manually create new page files
+- 🎯 Content managed via **Sanity CMS** (headless API)
+- 🛡 SEO-friendly with customizable metadata (`title`, `description`, `canonicalURL`, etc.)
+- 🌍 Responsive and fast static generation (ISR or SSG)
+- 🔒 Environment variable support for API keys
+- ☁️ Easily deployable to **Cloudflare Pages**, **Vercel**, or other providers
 
-<!-- dash-content-end -->
+---
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+## 🏗 Project Structure
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/next-starter-template
+```
+src/
+├── app/
+│   ├── layout.tsx              # Shared layout
+│   ├── page.tsx                # Home page (optional)
+│   └── [slug]/                 # Dynamic content pages
+│       ├── page.tsx
+│       └── head.tsx            # SEO metadata
+├── components/                 # Reusable UI components
+├── lib/
+│   └── sanity.ts               # Sanity API integration
 ```
 
-A live public deployment of this template is available at [https://next-starter-template.templates.workers.dev](https://next-starter-template.templates.workers.dev)
+---
 
-## Getting Started
+## ⚙️ Setup Instructions
 
-First, run:
+### 1. Clone the Repository
+
+```bash
+git clone git@github.com:macroscopic-ventures/website.git
+cd your-repo
+```
+
+### 2. Install Dependencies
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-# or
-bun install
 ```
 
-Then run the development server (using the package manager of your choice):
+### 3. Create `.env.local` File
+
+```env
+STRAPI_API_TOKEN=your_sanity_token_here
+```
+
+> 🔐 Get your token from Sanity under **API Tokens**.
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🛠 Sanity CMS Setup
 
-## Deploying To Production
+- Ensure Sanity is running (locally or hosted)
+- Create a `Page` collection type with fields:
+  - `title` (Text)
+  - `slug` (UID)
+  - `content` (Rich Text / Components)
+  - `metaTitle`, `metaDescription`, `metaImage`, `canonicalURL`, etc.
 
-| Command                           | Action                                       |
-| :-------------------------------- | :------------------------------------------- |
-| `npm run build`                   | Build your production site                   |
-| `npm run preview`                 | Preview your build locally, before deploying |
-| `npm run build && npm run deploy` | Deploy your production site to Cloudflare    |
+---
 
-## Learn More
+## 🔄 Adding New Pages
 
-To learn more about Next.js, take a look at the following resources:
+New content pages are automatically fetched from Sanity using the `[slug]` route.  
+**No front-end code changes are needed** to add new pages.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 📦 Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## ☁️ Deployment (Cloudflare Pages / Vercel)
+
+- Push to GitHub
+- Connect repo in Cloudflare or Vercel dashboard
+- Set environment variables
+- Deploy!
+
+---
+
+## 🧑‍💻 Author
+
+- **Your Name**
+- `your.email@example.com`
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).

@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-
 const nextConfig: NextConfig = {
   output: 'standalone',
   env: {
@@ -26,6 +24,3 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 export default nextConfig;
-
-// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
-initOpenNextCloudflareForDev();
